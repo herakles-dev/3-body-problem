@@ -1,5 +1,7 @@
 # 3-Body Problem
 
+[![CI](https://github.com/herakles-dev/3-body-problem/actions/workflows/ci.yml/badge.svg)](https://github.com/herakles-dev/3-body-problem/actions/workflows/ci.yml)
+
 GPU-accelerated N-body gravitational simulation with audio-reactive visualization. Each body responds to a dedicated frequency band of the input audio, producing synchronized physics-driven music visualizations.
 
 ![Figure-8 three-body solution](docs/figure-eight.png)
@@ -59,7 +61,7 @@ Python, NVIDIA Warp, NumPy, matplotlib, librosa, scipy, OpenGL
 python -m pytest tests/ -v
 ```
 
-9 test files covering camera modes, frequency zones, harmonic analysis, physics engine, spectral spawning, and palette systems.
+9 test files covering camera modes, frequency zones, harmonic analysis, physics engine, spectral spawning, and palette systems. All of them run on CPU: Warp falls back to its `cpu` device whenever no CUDA driver is present, so CI runs the full suite on `ubuntu-latest` with no GPU and no skip markers needed. Three files (`test_camera_director.py`, `test_camera_modes.py`, `test_moment_detector.py`) are plain scripts rather than pytest cases, so CI also runs them directly with `python`.
 
 ## Documentation
 
